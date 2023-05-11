@@ -15,6 +15,22 @@ def is_safe(processes, available, max_resources, allocation_matrix):
             break   
 
     return all(finish), safe_sequence, work
+
+def resource_page():
+    layout = [[sg.Text('Enter the process that requests the resource:'), sg.InputText()],[sg.Text('Enter the resource type:'), sg.InputText()],[sg.Text('Enter the number of that resource needed:'), sg.InputText()],[sg.Button('Ok'), sg.Button('Cancel')]]
+    window=sg.Window("Calculating if safe or not...",layout)
+    while True:             
+        event, values = window.read()
+        if event in (sg.WIN_CLOSED, 'Cancel'):
+            break
+        elif event == 'Ok':
+            process_num = int(values[0])
+            resource_num = int(values[1])
+            amount= int(values[2])
+            window.close()
+            break
+    return process_num, resource_num, amount
+
 sg.theme('DarkAmber')
 layout = [[sg.Text('Enter the number of resources'), sg.InputText()],[sg.Text('Enter the number of processes'), sg.InputText()],[sg.Button('Ok'), sg.Button('Cancel')]]
 window=sg.Window("Welcome User!",layout)
@@ -41,20 +57,7 @@ while True:
         available = [int(values[i]) for i in range(num_resources)]
         window.close()
         break
-def resource_page():
-    layout = [[sg.Text('Enter the process that requests the resource:'), sg.InputText()],[sg.Text('Enter the resource type:'), sg.InputText()],[sg.Text('Enter the number of that resource needed:'), sg.InputText()],[sg.Button('Ok'), sg.Button('Cancel')]]
-    window=sg.Window("Calculating if safe or not...",layout)
-    while True:             
-        event, values = window.read()
-        if event in (sg.WIN_CLOSED, 'Cancel'):
-            break
-        elif event == 'Ok':
-            process_num = int(values[0])
-            resource_num = int(values[1])
-            amount= int(values[2])
-            window.close()
-            break
-    return process_num, resource_num, amount
+
 sg.set_options(font=('Courier New', 12))
 layout=[[sg.Text('Enter the allocated matrix:')]]
 for i in range(num_processes):
