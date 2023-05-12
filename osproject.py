@@ -48,7 +48,8 @@ layout = [[sg.Text('Enter the available resources:')]]
 for i in range(num_resources):
     layout.append([sg.Text('R'+str(i)+':'),sg.InputText()])
 layout.append([sg.Button('Ok'), sg.Button('Cancel')])
-window=sg.Window("Please enter the information below",layout)
+scrollable_window = [[sg.Column(layout, size=(800, 600), scrollable=True, vertical_scroll_only=True)]]
+window=sg.Window("Please enter the information below",scrollable_window)
 while True:
     event, values = window.read()
     if event in (sg.WIN_CLOSED, 'Cancel'):
@@ -66,7 +67,8 @@ for i in range(num_processes):
         layout.append([sg.Text('R'+str(j)+':'),sg.InputText()])
         
 layout.append([sg.Button('Ok'), sg.Button('Cancel')])
-window=sg.Window("Please enter the information below",layout)
+scrollable_window = [[sg.Column(layout, size=(800, 600), scrollable=True, vertical_scroll_only=True)]]
+window=sg.Window("Please enter the information below",scrollable_window)
 while True:
     event, values = window.read()
     if event in (sg.WIN_CLOSED, 'Cancel'):
@@ -89,7 +91,8 @@ for i in range(num_processes):
         layout.append([sg.Text('R'+str(j)+':'),sg.InputText()])
         
 layout.append([sg.Button('Ok'), sg.Button('Cancel')])
-window=sg.Window("Please enter the information below",layout)
+scrollable_window = [[sg.Column(layout, size=(800, 600), scrollable=True, vertical_scroll_only=True)]]
+window=sg.Window("Please enter the information below",scrollable_window)
 while True:
     event, values = window.read()
     if event in (sg.WIN_CLOSED, 'Cancel'):
